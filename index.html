@@ -66,7 +66,20 @@
       }
     </style>
   </head>
-  <body class="overflow-x-hidden " x-data="{ active : 'home' }" >
+  <body class="overflow-x-hidden " x-data="{ active : 'home' }"
+  
+  x-init="
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          active = entry.target.id;
+        }
+      });
+    }, { threshold: 0.6 });
+    
+    sections.forEach(section => observer.observe(section));
+  "  >
     <!-- home  -->
     <section x-data="{ openMobileMenu: false }" id="home" class="bg-white overflow-x-hidden overflow-y-hidden h-screen min-h-screen ">
       <header class="fixed w-screen backdrop-blur-lg bg-white bg-white/75 inset-x-0 top-0 z-50 overflow-y-auto  "
@@ -375,8 +388,7 @@
     </section>
 
     <!-- about section -->
-    <section
-      id="about"
+    <section      id="about"
       class="mx-auto    w-[90%] pt-24 max-w-7xl "
       aria-label="About East Wind Myanmar"
     >
@@ -448,8 +460,7 @@
 
 
     <!-- first logos set  -->
-    <div
-      class="overflow-x-hidden  mt-[200px] mb-5 w-[90%] mx-auto h-[180px] mask-container scroll-wrapper"
+    <div      class="overflow-x-hidden  mt-[200px] mb-5 w-[90%] mx-auto h-[180px] mask-container scroll-wrapper"
     >
       <div class="flex w-max h-[180px] items-center scroll-content">
         <!-- First set -->
@@ -1379,8 +1390,7 @@
     </section>
 
     <!-- career -->
-    <section
-    id="career"
+    <section    id="career"
     class=" mx-auto w-[90%]  max-w-7xl  pt-[150px]   "
     aria-label="About East Wind Myanmar"
   >
