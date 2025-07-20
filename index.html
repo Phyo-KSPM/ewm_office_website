@@ -155,7 +155,7 @@
       { name: 'Home', id: 'home' },
       { name: 'About', id: 'about' },
       { name: 'Products', id: 'product' },
-      { name: 'Support', id: 'support' },
+<!--       { name: 'Support', id: 'support' }, -->
       { name: 'Career', id: 'career' },
       { name: 'Contact Us', id: 'contactUs' }
     ]
@@ -169,7 +169,16 @@
                 class="text-sm px-3 py-2 transition"
                 x-text="item.name"
               ></a>
+
+
             </template>
+                            <a
+                href="https://support.eastwindmyanmar.com.mm"
+                @click="active = item.id"
+                :class="active === item.id ? 'text-indigo-600 font-bold' : 'text-gray-900 font-semibold'"
+                class="text-sm px-3 py-2 transition"
+               
+              >Support</a>
           </div>
 
           <div
