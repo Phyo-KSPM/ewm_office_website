@@ -251,7 +251,7 @@
       { id: 'home', label: 'Home' },
       { id: 'about', label: 'About' },
       { id: 'product', label: 'Products' },
-      { id: 'support', label: 'Support' },
+<!--       { id: 'support', label: 'Support' }, -->
       { id: 'career', label: 'Career' },
       { id: 'contactUs', label: 'Contact Us' }
     ]
@@ -260,6 +260,16 @@
                 <template x-for="link in links" :key="link.id">
                   <a
                     :href="`#${link.id}`"
+                    @click="active = link.id; openMobileMenu = false"
+                    :class="[
+        '-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold capitalize',
+        active === link.id ? 'text-indigo-600 font-bold' : 'text-gray-900 hover:bg-gray-50'
+      ].join(' ')"
+                    x-text="link.label"
+                  ></a>
+
+                   <a
+                    :href="`https://www.support.eastwindmyanmar.com.mm`"
                     @click="active = link.id; openMobileMenu = false"
                     :class="[
         '-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold capitalize',
@@ -1029,9 +1039,9 @@ We work with honesty, integrity, and strong business ethics, striving to grow th
             </svg>
             <div class="flex flex-col sm:flex-row space-x-3">
               <p class="font-semibold text-gray-700">
-                Customer Complaint Hotline:
+               Hotline:
               </p>
-              <p>09758849541</p>
+              <p>09XXXXXXXX</p>
             </div>
           </div>
 
@@ -1519,6 +1529,22 @@ We work with honesty, integrity, and strong business ethics, striving to grow th
         reserved.
       </p>
     </footer>
+    <script>
+  (function(d,t) {
+    var BASE_URL="https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'HCkXCEBzHWKee3KJMp5XFcVu',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
+</script>
+
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
